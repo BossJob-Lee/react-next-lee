@@ -1,47 +1,48 @@
-import { useEffect } from "react";
-import { NextPage, GetServerSideProps} from "next";
+import { useEffect } from 'react'
+import { NextPage, GetServerSideProps } from 'next'
 import action from '../../store/actions/index'
 import { wrapper } from '../../store'
 import { END } from 'redux-saga'
-import  superjson from 'superjson'
+import superjson from 'superjson'
 import { useDispatch, useSelector } from 'react-redux'
 
 interface IJobDetail {
-    jobDetail: any
-    config: any
+  jobDetail: any
+  config: any
 }
 
 const Msg: NextPage = (props) => {
-    const dispatch = useDispatch()
-    console.log(props)
-    // store.dispatch(action.msg.increase())
-    // let { msg } = store.getState()
-    // console.log(msg)
-    // useEffect(() => {
-    //     dispatch(action.msg.increase())
-    // }, [])
+  const dispatch = useDispatch()
+  console.log(props)
 
-    let msg = useSelector(
-        (store: any) => store.msg
-      )
-    console.log(msg)
-    return (
-        <div>
-            {/* {msg.count}
+  // store.dispatch(action.msg.increase())
+  // let { msg } = store.getState()
+  // console.log(msg)
+  // useEffect(() => {
+  //     dispatch(action.msg.increase())
+  // }, [])
+
+  const msg = useSelector((store: any) => store.msg)
+  console.log(msg)
+  return (
+    <div>
+      {/* {msg.count}
             <button onClick={() => {store.dispatch(action.msg.increase(90))}} >1231</button> */}
-            1
-        </div>
-    )
+      1
+    </div>
+  )
 }
 
-export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ query, req }) => {
-    return {
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) =>
+    async ({ query, req }) => {
+      return {
         props: {
-            ui: 1,
-            bb: 2
-        }
+          ui: 1,
+          bb: 3,
+        },
       }
-  });
-  
+    }
+)
 
 export default Msg
