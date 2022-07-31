@@ -1,10 +1,13 @@
 import { NextPage } from 'next'
+import { useState } from 'react'
 
 const Commit: NextPage = () => {
+  const [name, setName] = useState('lee')
   return (
     <div>
       commit
-      <div>123</div>
+      <div>{name}</div>
+      <div onClick={() => setName('wang lee')}>click</div>
     </div>
   )
 }
