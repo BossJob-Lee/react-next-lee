@@ -1,8 +1,26 @@
 import { combineReducers } from 'redux'
+import { HYDRATE } from 'next-redux-wrapper'
 
 import msg from './msg/index'
 
 
-export default combineReducers({
-    msg
-})
+// export default combineReducers({
+//     msg
+// })
+
+const reducer = (state, action) => {
+    if (action.type === HYDRATE) {
+      const nextState = {
+        ...state, // use previous state
+        ...action.payload, // apply delta from hydration
+      };
+      if (state.count) nextState.count = state.count; // preserve count value on client side navigation
+      return nextState;
+    } else {
+      return combineReducers({
+        msg
+      });
+    }
+  };
+
+  export default reducer

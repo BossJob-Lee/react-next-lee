@@ -1,18 +1,28 @@
 import { useEffect } from "react";
-import { NextPage } from "next";
+import { NextPage, GetServerSideProps} from "next";
 import action from '../../store/actions/index'
-import store from '../../store'
+import { wrapper } from '../../store'
+import { END } from 'redux-saga'
+import  superjson from 'superjson'
 
-const Msg:NextPage = () => {
+interface IJobDetail {
+    jobDetail: any
+    config: any
+}
+
+const Msg = ({
+    jobDetail,
+    config
+}: IJobDetail) => {
 
     // store.dispatch(action.msg.increase())
     // let { msg } = store.getState()
     // console.log(msg)
-    useEffect(() => {
-        store.dispatch(action.msg.increase())
-        let { msg } = store.getState()
-        console.log(msg)
-    }, [])
+    // useEffect(() => {
+    //     store.dispatch(action.msg.increase())
+    //     let { msg } = store.getState()
+    //     console.log(msg)
+    // }, [])
 
     return (
         <div>
@@ -22,5 +32,30 @@ const Msg:NextPage = () => {
         </div>
     )
 }
+
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
+    // Code here
+    let propss: {
+        jobDetail: 'wq',
+            config: 'pp'
+    }
+    const data = null
+    // if (!data) {
+    //     return {
+    //       redirect: {
+    //         jobDetail: '/',
+    //         config: false,
+    //       },
+    //     }
+    //   }
+    const ui = superjson.stringify({
+        jobDetail: 1,
+        config: 2,
+    });
+      return {
+        props: ui, // will be passed to the page component as props
+      }
+})
+  
 
 export default Msg
