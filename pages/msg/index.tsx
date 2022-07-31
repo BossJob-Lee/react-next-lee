@@ -4,26 +4,27 @@ import action from '../../store/actions/index'
 import { wrapper } from '../../store'
 import { END } from 'redux-saga'
 import  superjson from 'superjson'
+import { useDispatch, useSelector } from 'react-redux'
 
 interface IJobDetail {
     jobDetail: any
     config: any
 }
 
-const Msg = ({
-    jobDetail,
-    config
-}: IJobDetail) => {
-
+const Msg: NextPage = (props) => {
+    const dispatch = useDispatch()
+    console.log(props)
     // store.dispatch(action.msg.increase())
     // let { msg } = store.getState()
     // console.log(msg)
     // useEffect(() => {
-    //     store.dispatch(action.msg.increase())
-    //     let { msg } = store.getState()
-    //     console.log(msg)
+    //     dispatch(action.msg.increase())
     // }, [])
 
+    let msg = useSelector(
+        (store: any) => store.msg
+      )
+    console.log(msg)
     return (
         <div>
             {/* {msg.count}
@@ -33,29 +34,14 @@ const Msg = ({
     )
 }
 
-export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
-    // Code here
-    let propss: {
-        jobDetail: 'wq',
-            config: 'pp'
-    }
-    const data = null
-    // if (!data) {
-    //     return {
-    //       redirect: {
-    //         jobDetail: '/',
-    //         config: false,
-    //       },
-    //     }
-    //   }
-    const ui = superjson.stringify({
-        jobDetail: 1,
-        config: 2,
-    });
-      return {
-        props: ui, // will be passed to the page component as props
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ query, req }) => {
+    return {
+        props: {
+            ui: 1,
+            bb: 2
+        }
       }
-})
+  });
   
 
 export default Msg
