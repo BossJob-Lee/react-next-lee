@@ -3,13 +3,12 @@ import { takeEvery, put, call } from 'redux-saga/effects'
 // import { put, takeEvery } from 'redux-saga/effects'
 
 // ...
-export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+export const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 function* incrementAsync() {
-  yield call(delay, 1000);
-      const data = {
-    }
-  
-    // 不允许在type INCREASE 中触发 INCREASE， 必须不一样不然会一直循环
+  yield call(delay, 1000)
+  const data = {}
+
+  // 不允许在type INCREASE 中触发 INCREASE， 必须不一样不然会一直循环
   yield put({ type: 'DECREASE', response: data })
 }
 

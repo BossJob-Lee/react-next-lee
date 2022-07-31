@@ -1,18 +1,13 @@
-import { useEffect } from 'react'
-import { NextPage, GetServerSideProps } from 'next'
-import action from '../../store/actions/index'
+// import { useEffect } from 'react'
+import { NextPage } from 'next'
+// import action from '../../store/actions/index'
 import { wrapper } from '../../store'
-import { END } from 'redux-saga'
-import superjson from 'superjson'
-import { useDispatch, useSelector } from 'react-redux'
-
-interface IJobDetail {
-  jobDetail: any
-  config: any
-}
+// import { END } from 'redux-saga'
+// import superjson from 'superjson'
+import { useSelector } from 'react-redux'
 
 const Msg: NextPage = (props) => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   console.log(props)
 
   // store.dispatch(action.msg.increase())
@@ -33,16 +28,13 @@ const Msg: NextPage = (props) => {
   )
 }
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
-    async ({ query, req }) => {
-      return {
-        props: {
-          ui: 1,
-          bb: 3,
-        },
-      }
-    }
-)
+export const getServerSideProps = wrapper.getServerSideProps(() => async () => {
+  return {
+    props: {
+      ui: 1,
+      bb: 3,
+    },
+  }
+})
 
 export default Msg
