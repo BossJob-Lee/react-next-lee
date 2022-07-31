@@ -7,7 +7,7 @@ const Commit: NextPage = () => {
     <div>
       commit
       <div>{name}</div>
-      <div onClick={() => setName('wang lee')}>click</div>
+      <div onClick={() => setName('wang lee 月月ui')}>click</div>
     </div>
   )
 }
