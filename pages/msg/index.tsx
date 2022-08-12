@@ -1,16 +1,16 @@
 // import { useEffect } from 'react'
 import { NextPage } from 'next'
-// import action from '../../store/actions/index'
+import action from '../../store/actions/index'
 import { wrapper } from '../../store'
 // import { END } from 'redux-saga'
 // import superjson from 'superjson'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 const Msg: NextPage = (props) => {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   console.log(props)
 
-  // store.dispatch(action.msg.increase())
+  dispatch(action.msg.increase())
   // let { msg } = store.getState()
   // console.log(msg)
   // useEffect(() => {

@@ -1,6 +1,6 @@
 const action = {
-  increase: () => ({ type: 'INCREASE' }),
-  decrease: () => ({ type: 'DECREASE' }),
+  increase: () => ({ type: 'INCREASE', response: { Loading: true } }),
+  decrease: () => ({ type: 'DECREASE' })
 }
 
 export default action
