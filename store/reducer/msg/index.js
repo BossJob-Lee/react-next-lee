@@ -1,7 +1,7 @@
 const initialState = {
   fetching: false,
   payload: {},
-  response: {},
+  response: {}
 }
 const msg = (state = initialState, action) => {
   switch (action.type) {

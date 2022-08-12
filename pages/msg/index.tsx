@@ -32,8 +32,8 @@ export const getServerSideProps = wrapper.getServerSideProps(() => async () => {
   return {
     props: {
       ui: 1,
-      bb: 3,
-    },
+      bb: 3
+    }
   }
 })
 

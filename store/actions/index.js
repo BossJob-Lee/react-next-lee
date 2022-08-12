@@ -1,6 +1,6 @@
 import msg from './msg/index'
 const actions = {
-  msg,
+  msg
 }
 
 export default actions
